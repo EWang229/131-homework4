@@ -50,9 +50,8 @@ Split the data, stratifying on the outcome variable, `survived.`  You should cho
 titanic_split <- initial_split(titanic, prop = 0.80, strata = survived)
 titanic_train <- training(titanic_split)
 titanic_test <- testing(titanic_split)
-nrow(titanic)
-nrow(titanic_train)  # about 80% of the data
-nrow(titanic_test)  # about to be 20% of the data
+dim(titanic_train)
+dim(titanic_test)
 ```
 
 ### Question 2
@@ -67,7 +66,7 @@ titanic_folds <- vfold_cv(titanic_train, v = 10)
 
 In your own words, explain what we are doing in Question 2. What is *k*-fold cross-validation? Why should we use it, rather than simply fitting and testing models on the entire training set? If we **did** use the entire training set, what resampling method would that be?
 
-In question 2, we are splitting our training data into 10 folds of roughly equal size. K-fold cross-validation is a resampling method that allows us to get more robust estimates of model performance. It is when you divide the data into *k* folds, hold out one fold, fit the model to the rest of the folds, calculate accuracy or MSE on the held out fold, and repeat this process *k* times. If we used the entire training set, we would be using the validation set approach.
+In question 2, we are splitting our training data into 10 folds of roughly equal size. K-fold cross-validation is a resampling method that allows us to get more robust estimates of model performance. It is when you divide the data into *k* folds, hold out one fold, fit the model to the rest of the folds, calculate accuracy or MSE on the held out fold, and repeat this process *k* times. We should use it rather than simply fitting and testing models on the entire training set because k-fold cross-validation will give a more accurate measure of model performance (less biased). If we used the entire training set, we would be using the validation set approach.
 
 ### Question 4
 
